@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.system.id="Blaze" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../../apiv2/src/main/java" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../.." />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-booking" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-genfiles" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-out" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../bazel-testlogs" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="stamped_spring-boot-autoconfigure-2.1.3.RELEASE_a235997f" level="project" />
+    <orderEntry type="library" name="stamped_spring-boot-starter-web-2.1.3.RELEASE_7c7a273e" level="project" />
+    <orderEntry type="library" name="stamped_spring-context-5.1.5.RELEASE_1f684b94" level="project" />
+    <orderEntry type="library" name="stamped_spring-boot-2.1.3.RELEASE_f41d59b5" level="project" />
+    <orderEntry type="library" name="stamped_spring-web-5.1.5.RELEASE_bafc3a79" level="project" />
+    <orderEntry type="library" name="libprofile_java_grpc-hjar_943edf0e" level="project" />
+    <orderEntry type="library" name="librate_java_grpc-hjar_943edf0e" level="project" />
+    <orderEntry type="library" name="libprofile_proto-speed-hjar_475a3bf6" level="project" />
+    <orderEntry type="library" name="librate_proto-speed-hjar_475a3bf6" level="project" />
+  </component>
+</module>

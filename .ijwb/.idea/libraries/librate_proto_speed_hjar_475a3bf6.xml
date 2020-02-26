@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="librate_proto-speed-hjar_475a3bf6">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.cache/bazel/_bazel_sang/73b9ced06d2152e32e03fc924a4a4f04/execroot/booking/bazel-out/k8-fastbuild/bin/librate_proto-speed-hjar.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.cache/bazel/_bazel_sang/73b9ced06d2152e32e03fc924a4a4f04/execroot/booking/bazel-out/k8-fastbuild/bin/rate_proto-speed-src.jar!/" />
+    </SOURCES>
+  </library>
+</component>

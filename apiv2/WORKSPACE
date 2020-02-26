@@ -1,0 +1,61 @@
+workspace(name = "api")
+
+local_repository(
+    name = "booking",
+    path = "..",
+)
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "rules_jvm_external",
+    sha256 = "62133c125bf4109dfd9d2af64830208356ce4ef8b165a6ef15bbff7460b35c3a",
+    strip_prefix = "rules_jvm_external-3.0",
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/3.0.zip",
+)
+
+http_archive(
+    name = "io_grpc_grpc_java",
+    sha256 = "92ffb4391f847e02e115933a761e243dd1423f3fcafdc9b7ae0327eca102d76b",
+    strip_prefix = "grpc-java-1.27.2",
+    url = "https://github.com/grpc/grpc-java/archive/v1.27.2.zip",
+)
+
+
+load("@rules_jvm_external//:defs.bzl", "maven_install")
+load("@io_grpc_grpc_java//:repositories.bzl", "IO_GRPC_GRPC_JAVA_ARTIFACTS")
+load("@io_grpc_grpc_java//:repositories.bzl", "IO_GRPC_GRPC_JAVA_OVERRIDE_TARGETS")
+
+SPRING_BOOT_VERSION = "2.2.4.RELEASE"
+SPRING_CLOUD_CONSUL_VERSION = "2.2.1.RELEASE"
+GRPC_JAVA_VERSION = "1.27.2"
+
+maven_install(
+    artifacts = [
+        "org.springframework.boot:spring-boot-starter-web:%s" % SPRING_BOOT_VERSION,
+        "org.springframework.cloud:spring-cloud-starter-consul-discovery:%s" % SPRING_CLOUD_CONSUL_VERSION,
+        "io.grpc:grpc-netty-shaded:%s" % GRPC_JAVA_VERSION,
+        "io.grpc:grpc-protobuf:%s" % GRPC_JAVA_VERSION,
+        "io.grpc:grpc-stub:%s" % GRPC_JAVA_VERSION,
+    ] + IO_GRPC_GRPC_JAVA_ARTIFACTS,
+    generate_compat_repositories = True,
+    override_targets = IO_GRPC_GRPC_JAVA_OVERRIDE_TARGETS,
+    repositories = [
+        "https://repo.maven.apache.org/maven2/",
+    ],
+    maven_install_json = "@api//:maven_install.json",
+)
+
+# install maven dependencies used in the spring boot app
+load("@maven//:defs.bzl", "pinned_maven_install")
+pinned_maven_install()
+
+# load build scripts from grpc-java workspace
+load("@maven//:compat.bzl", "compat_repositories")
+compat_repositories()
+
+load("@io_grpc_grpc_java//:repositories.bzl", "grpc_java_repositories")
+grpc_java_repositories()
+
+load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+protobuf_deps()
