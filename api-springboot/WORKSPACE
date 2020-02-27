@@ -21,22 +21,28 @@ http_archive(
     url = "https://github.com/grpc/grpc-java/archive/v1.27.2.zip",
 )
 
-
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 load("@io_grpc_grpc_java//:repositories.bzl", "IO_GRPC_GRPC_JAVA_ARTIFACTS")
 load("@io_grpc_grpc_java//:repositories.bzl", "IO_GRPC_GRPC_JAVA_OVERRIDE_TARGETS")
 
+SPRING_FRAMEWORK_VERSION = "5.2.3.RELEASE"
 SPRING_BOOT_VERSION = "2.2.4.RELEASE"
 SPRING_CLOUD_CONSUL_VERSION = "2.2.1.RELEASE"
 GRPC_JAVA_VERSION = "1.27.2"
+GRPC_SPRING_BOOT_VERSION = "3.5.2"
 
 maven_install(
     artifacts = [
-        "org.springframework.boot:spring-boot-starter-web:%s" % SPRING_BOOT_VERSION,
-        "org.springframework.cloud:spring-cloud-starter-consul-discovery:%s" % SPRING_CLOUD_CONSUL_VERSION,
         "io.grpc:grpc-netty-shaded:%s" % GRPC_JAVA_VERSION,
         "io.grpc:grpc-protobuf:%s" % GRPC_JAVA_VERSION,
         "io.grpc:grpc-stub:%s" % GRPC_JAVA_VERSION,
+        "io.github.lognet:grpc-spring-boot-starter:%s" % GRPC_SPRING_BOOT_VERSION,
+        "org.springframework.boot:spring-boot-autoconfigure:%s" % SPRING_BOOT_VERSION,
+        "org.springframework.boot:spring-boot-test-autoconfigure:%s" % SPRING_BOOT_VERSION,
+        "org.springframework.boot:spring-boot-test:%s" % SPRING_BOOT_VERSION,
+        "org.springframework.boot:spring-boot:%s" % SPRING_BOOT_VERSION,
+        "org.springframework.boot:spring-boot-starter-web:%s" % SPRING_BOOT_VERSION,
+        "org.springframework.cloud:spring-cloud-starter-consul-discovery:%s" % SPRING_CLOUD_CONSUL_VERSION,
     ] + IO_GRPC_GRPC_JAVA_ARTIFACTS,
     generate_compat_repositories = True,
     override_targets = IO_GRPC_GRPC_JAVA_OVERRIDE_TARGETS,

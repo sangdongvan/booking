@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: booking
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+
+# Registering Management as a Separate Service
+management:
+  server:
+    port: 4452
